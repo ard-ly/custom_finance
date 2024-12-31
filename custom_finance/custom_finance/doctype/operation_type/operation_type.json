@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:operation_type_name",
+ "creation": "2024-12-20 14:19:44.313596",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_kx92",
+  "operation_type_name",
+  "operation_account",
+  "account_section",
+  "table_fjfu"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_kx92",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "operation_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Operation Type Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "operation_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operation Account",
+   "options": "Account",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "account_section",
+   "fieldtype": "Section Break",
+   "label": "Account"
+  },
+  {
+   "fieldname": "table_fjfu",
+   "fieldtype": "Table",
+   "options": "Operation Type Template Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-21 16:56:47.358737",
+ "modified_by": "Administrator",
+ "module": "custom_finance",
+ "name": "Operation Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

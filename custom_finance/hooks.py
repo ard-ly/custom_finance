@@ -227,3 +227,16 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+fixtures = [
+    "Custom Field",
+    "Client Script",
+    "Server Script",
+    {
+        "doctype": "DocType",
+        "filters": {
+            "custom": 1
+        }
+    }
+]
+

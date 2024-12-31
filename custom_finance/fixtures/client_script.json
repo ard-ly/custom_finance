@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Top-up Transactions",
+  "enabled": 1,
+  "modified": "2024-12-21 14:01:44.799499",
+  "module": "custom_finance",
+  "name": "Top-up Transactions",
+  "script": "frappe.ui.form.on('Top-up Transactions', {\r\n    operation_type: function(frm) {\r\n        // Check if there are any rows in the transactions_account table\r\n        if (frm.doc.transactions_account && frm.doc.transactions_account.length > 0) {\r\n            // Set the operation_type field for the first row in the transactions_account table\r\n            frm.doc.transactions_account[0].operation_type = frm.doc.operation_type;\r\n\r\n            // Refresh the field in the table to reflect the changes\r\n            frm.refresh_field('transactions_account');\r\n        }\r\n    },\r\n    account: function(frm) {\r\n        // Check if there are any rows in the transactions_account table\r\n        if (frm.doc.transactions_account && frm.doc.transactions_account.length > 0) {\r\n            // Set the account field for the first row in the transactions_account table\r\n            frm.doc.transactions_account[0].account = frm.doc.account;\r\n\r\n            // Refresh the field in the table to reflect the changes\r\n            frm.refresh_field('transactions_account');\r\n        }\r\n    }\r\n});\r\n",
+  "view": "Form"
+ }
+]
