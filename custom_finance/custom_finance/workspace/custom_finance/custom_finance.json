@@ -1,0 +1,108 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"AJW93oWJFf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Custom Finance</span>\",\"col\":12}},{\"id\":\"0hmKol5w0J\",\"type\":\"card\",\"data\":{\"card_name\":\"Custom Finance\",\"col\":4}},{\"id\":\"BSvRYem06q\",\"type\":\"card\",\"data\":{\"card_name\":\"Extra\",\"col\":4}}]",
+ "creation": "2025-01-18 15:40:50.152285",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "accounting",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Custom Finance",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Custom Finance",
+   "link_count": 5,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Top-up Transactions",
+   "link_count": 0,
+   "link_to": "Top-up Transactions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cash Transfers to Merchants",
+   "link_count": 0,
+   "link_to": "Cash Transfers to Merchants",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Central Bank Transfers",
+   "link_count": 0,
+   "link_to": "Central Bank Transfers",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cheque Reconciliation",
+   "link_count": 0,
+   "link_to": "Cheque Reconciliation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Revenue recording",
+   "link_count": 0,
+   "link_to": "Revenue recording",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Extra",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operation Type",
+   "link_count": 0,
+   "link_to": "Operation Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-01-18 15:45:41.053116",
+ "modified_by": "Administrator",
+ "module": "custom_finance",
+ "name": "Custom Finance",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 33.0,
+ "shortcuts": [],
+ "title": "Custom Finance"
+}

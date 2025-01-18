@@ -1,15 +1,15 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:operation_type_name",
- "creation": "2024-12-20 14:19:44.313596",
+ "autoname": "field:purpose_name",
+ "creation": "2025-01-18 16:03:15.623707",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_kx92",
-  "operation_type_name",
-  "operation_debit_account",
-  "operation_credit_account"
+  "purpose_name",
+  "purpose_debit_account",
+  "purpose_credit_account"
  ],
  "fields": [
   {
@@ -17,27 +17,27 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "operation_type_name",
+   "fieldname": "purpose_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Operation Type Name",
+   "label": "Purpose Name",
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "operation_credit_account",
+   "fieldname": "purpose_debit_account",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Operation Credit Account",
+   "label": "Purpose Debit Account",
    "options": "Account",
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "operation_debit_account",
+   "fieldname": "purpose_credit_account",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Operation Debit Account",
+   "label": "Purpose Credit Account",
    "options": "Account",
    "reqd": 1,
    "unique": 1
@@ -45,10 +45,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-18 15:50:48.787696",
+ "modified": "2025-01-18 16:04:06.477251",
  "modified_by": "Administrator",
  "module": "custom_finance",
- "name": "Operation Type",
+ "name": "Purpose",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [

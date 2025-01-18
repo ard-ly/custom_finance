@@ -8,7 +8,6 @@
  "field_order": [
   "section_break_sk34",
   "operation_type",
-  "account",
   "naming_series",
   "column_break_uyzr",
   "posting_date",
@@ -35,16 +34,6 @@
    "label": "Operation Type",
    "options": "Operation Type",
    "reqd": 1
-  },
-  {
-   "fetch_from": "operation_type.operation_account",
-   "fieldname": "account",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Account",
-   "options": "Account"
   },
   {
    "fieldname": "naming_series",
@@ -126,7 +115,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-21 16:56:47.755011",
+ "modified": "2025-01-18 15:55:23.065001",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Top-up Transactions",
