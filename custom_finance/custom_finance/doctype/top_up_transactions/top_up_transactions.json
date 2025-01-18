@@ -75,7 +75,7 @@
    "fieldname": "transactions_account",
    "fieldtype": "Table",
    "label": "Top-up Transactions Account",
-   "options": "Top-up Transactions Account",
+   "options": "Accounts",
    "reqd": 1
   },
   {
@@ -115,7 +115,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-18 15:55:23.065001",
+ "modified": "2025-01-18 16:14:53.595765",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Top-up Transactions",

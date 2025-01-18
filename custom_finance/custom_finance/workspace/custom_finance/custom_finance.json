@@ -76,7 +76,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Extra",
-   "link_count": 1,
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -90,9 +90,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purpose",
+   "link_count": 0,
+   "link_to": "Purpose",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2025-01-18 15:45:41.053116",
+ "modified": "2025-01-18 16:45:30.658626",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Custom Finance",
