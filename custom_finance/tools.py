@@ -97,5 +97,57 @@ def add_party_type():
                 print(f"Error while adding '{party_type}' Party Type: {e}")
 
 
+def add_driver_type():
+    driver_types = ["Freelancer", "Enterprise"]
+
+    for driver_type in driver_types:
+        if not frappe.db.exists("Driver Type", {"name": driver_type}):
+            try:
+                driver_type_doc = frappe.new_doc("Driver Type")
+                driver_type_doc.update({
+                    "doctype": "Driver Type",
+                    "type": driver_type
+                })
+                driver_type_doc.save(ignore_permissions=True)
+                frappe.db.commit()
+                print(f"Added '{driver_type}' as Driver Type")
+            except Exception as e:
+                print(f"Error while adding '{driver_type}' Driver Type: {e}")
+
+
+
+def add_wallet_type():
+    wallet_types = ["Gpay", "Gift card", "Anis"]
+
+    for wallet_type in wallet_types:
+        if not frappe.db.exists("Wallet Type", {"name": wallet_type}):
+            try:
+                wallet_type_doc = frappe.new_doc("Wallet Type")
+                wallet_type_doc.update({
+                    "doctype": "Wallet Type",
+                    "type": wallet_type
+                })
+                wallet_type_doc.save(ignore_permissions=True)
+                frappe.db.commit()
+                print(f"Added '{wallet_type}' as Wallet Type")
+            except Exception as e:
+                print(f"Error while adding '{wallet_type}' Wallet Type: {e}")
+
+
+
+def add_accounting_dimensions():
+    accounting_dimensions = ["Wallet Type", "Territory", "Driver Type"]
+
+    for dimension_type in accounting_dimensions:
+        if not frappe.db.exists("Accounting Dimension", {"name": dimension_type}):
+            try:
+                accounting_dimension_doc = frappe.new_doc("Accounting Dimension")
+                accounting_dimension_doc.document_type = dimension_type
+                accounting_dimension_doc.save(ignore_permissions=True)
+                frappe.db.commit()
+                print(f"Added '{dimension_type}' as Accounting Dimension")
+
+            except Exception as e:
+                print(f"Error while adding '{dimension_type}' Accounting Dimension: {e}")
 
 
