@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "format:ST-{#####}",
  "creation": "2024-12-20 20:23:19.573882",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -41,8 +41,7 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date",
-   "reqd": 1
+   "label": "Date"
   },
   {
    "fieldname": "section_break_fnvs",
@@ -99,11 +98,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-22 11:52:26.498197",
+ "modified": "2025-04-22 12:14:21.623609",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Settlement Transaction",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

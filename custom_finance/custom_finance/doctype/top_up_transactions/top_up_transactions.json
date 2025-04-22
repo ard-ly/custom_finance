@@ -2,17 +2,15 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "format:TUT-{#####}",
  "creation": "2024-12-20 19:26:49.850663",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_sk34",
   "operation_type",
-  "naming_series",
   "column_break_uyzr",
   "posting_date",
-  "company",
   "section_break_yuti",
   "transactions_account",
   "section_break_zixw",
@@ -37,15 +35,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Series",
-   "options": "TUT-",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_uyzr",
    "fieldtype": "Column Break"
   },
@@ -55,17 +44,7 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Posting Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Company",
-   "options": "Company",
-   "reqd": 1
+   "label": "Posting Date"
   },
   {
    "fieldname": "section_break_yuti",
@@ -118,11 +97,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-22 11:52:15.720621",
+ "modified": "2025-04-22 12:14:02.389255",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Top-up Transactions",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

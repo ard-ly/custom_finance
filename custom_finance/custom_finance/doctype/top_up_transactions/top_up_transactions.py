@@ -19,7 +19,6 @@ class TopupTransactions(Document):
             "doctype": "Journal Entry",
             "voucher_type": "Journal Entry",
             "posting_date": self.posting_date,
-            "company": self.company,
             "custom_operation_type": self.operation_type,  # Custom field in JE
             "accounts": []
         })

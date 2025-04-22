@@ -1,0 +1,158 @@
+﻿Account Name,Parent Account,Account Number,Parent Account Number,Is Group,Account Type,Root Type,Account Currency
+الأصول,,1,,1,,Asset,LYD
+النقد وما في حكمه,الأصول,1100,1,1,Cash,Asset,LYD
+الخزينة,النقد وما في حكمه,110001,1100,0,Cash,Asset,LYD
+البنك - التجاري الوطني,النقد وما في حكمه,110002,1100,0,Bank,Asset,LYD
+البنك - الجمهورية,النقد وما في حكمه,110003,1100,0,Bank,Asset,LYD
+المدينون,الأصول,1200,1,1,Receivable,Asset,LYD
+العملاء,المدينون,120001,1200,0,Receivable,Asset,LYD
+السلف,المدينون,120002,1200,0,Receivable,Asset,LYD
+عهد الموظفين,المدينون,120003,1200,0,Receivable,Asset,LYD
+العهد والسلف,الأصول,1210,1,1,Receivable,Asset,LYD
+عهدة نثرية - إدارة,العهد والسلف,121001,1210,0,Receivable,Asset,LYD
+عهدة سفر,العهد والسلف,121002,1210,0,Receivable,Asset,LYD
+عهدة صيانة سيارات,العهد والسلف,121003,1210,0,Receivable,Asset,LYD
+عهدة مشتريات محلية,العهد والسلف,121004,1210,0,Receivable,Asset,LYD
+المخزون,الأصول,1300,1,1,Stock,Asset,LYD
+مخزون رئيسي,المخزون,130001,1300,0,Stock,Asset,LYD
+مدفوعات مقدمة,الأصول,1400,1,1,Receivable,Asset,LYD
+إيجار مقدم,مدفوعات مقدمة,140001,1400,0,Receivable,Asset,LYD
+إيرادات مستحقة,مدفوعات مقدمة,140002,1400,0,Receivable,Asset,LYD
+الأصول الثابتة,الأصول,1500,1,1,Fixed Asset,Asset,LYD
+أثاث وتركيبات,الأصول الثابتة,150001,1500,0,Fixed Asset,Asset,LYD
+معدات وآلات,الأصول الثابتة,150002,1500,0,Fixed Asset,Asset,LYD
+مجمع إهلاك الأثاث,الأصول الثابتة,150003,1500,0,Accumulated Depreciation,Asset,LYD
+مجمع إهلاك المعدات,الأصول الثابتة,150004,1500,0,Accumulated Depreciation,Asset,LYD
+مباني,الأصول الثابتة,150005,1500,0,Fixed Asset,Asset,LYD
+مجمع إهلاك المباني,الأصول الثابتة,150006,1500,0,Accumulated Depreciation,Asset,LYD
+سيارات,الأصول الثابتة,150007,1500,0,Fixed Asset,Asset,LYD
+مجمع إهلاك السيارات,الأصول الثابتة,150008,1500,0,Accumulated Depreciation,Asset,LYD
+حسابات نظامية أصول,الأصول,1600,1,1,Temporary,Asset,LYD
+Item Received But Not Billed,حسابات نظامية أصول,160001,1600,0,Temporary,Asset,LYD
+حسابات معلقة,الأصول,1700,1,1,Temporary,Asset,LYD
+حساب مؤقت - تسوية,حسابات معلقة,170001,1700,0,Temporary,Asset,LYD
+أصول غير ملموسة,الأصول,1800,1,1,Fixed Asset,Asset,LYD
+شهرة (Goodwill),أصول غير ملموسة,180001,1800,0,Fixed Asset,Asset,LYD
+أصل حق استخدام,الأصول,1850,1,1,Fixed Asset,Asset,LYD
+حق استخدام – مكتب,أصل حق استخدام,185001,1850,0,Fixed Asset,Asset,LYD
+حق استخدام – خوادم,أصل حق استخدام,185002,1850,0,Fixed Asset,Asset,LYD
+استثمارات,الأصول,1900,1,1,Fixed Asset,Asset,LYD
+استثمار في شركات تابعة,استثمارات,190001,1900,0,Fixed Asset,Asset,LYD
+استثمار في سندات وأوراق مالية,استثمارات,190002,1900,0,Fixed Asset,Asset,LYD
+استثمار طويل الأجل,استثمارات,190003,1900,0,Fixed Asset,Asset,LYD
+أصول محتفظ بها للبيع,الأصول,1990,1,1,Fixed Asset,Asset,LYD
+أصل محتفظ به للبيع – سيارة,أصول محتفظ بها للبيع,199001,1990,0,Fixed Asset,Asset,LYD
+أصل محتفظ به للبيع – معدات,أصول محتفظ بها للبيع,199002,1990,0,Fixed Asset,Asset,LYD
+الخصوم,,2,,1,,Liability,LYD
+الخصوم المتداولة,الخصوم,2100,2,1,Payable,Liability,LYD
+دائنون,الخصوم المتداولة,210001,2100,0,Payable,Liability,LYD
+مصروفات مستحقة,الخصوم المتداولة,210002,2100,0,Payable,Liability,LYD
+إيرادات مؤجلة,الخصوم,2200,2,1,Current Liability,Liability,LYD
+عمولات مؤجلة,إيرادات مؤجلة,220001,2200,0,Liability,Liability,LYD
+هدايا مؤجلة للسائقين,إيرادات مؤجلة,220002,2200,0,Liability,Liability,LYD
+التزامات الهدايا,الخصوم,2300,2,1,,Liability,LYD
+رصيد هدايا المستخدمين,التزامات الهدايا,230001,2300,0,,Liability,LYD
+حسابات نظامية خصوم,الخصوم,2400,2,1,Temporary,Liability,LYD
+Deferred Revenue,حسابات نظامية خصوم,240001,2400,0,Liability,Liability,LYD
+Gift Credit Liability,حسابات نظامية خصوم,240002,2400,0,,Liability,LYD
+حسابات مؤقتة,الخصوم,2500,2,1,Temporary,Liability,LYD
+حساب قيد مؤقت,حسابات مؤقتة,250001,2500,0,Temporary,Liability,LYD
+المخصصات,الخصوم,2600,2,1,Liability,Liability,LYD
+مخصص مكافآت نهاية الخدمة,المخصصات,260001,2600,0,Liability,Liability,LYD
+مخصص صيانة السيارات,المخصصات,260002,2600,0,Liability,Liability,LYD
+مخصص مطالبات قانونية محتملة,المخصصات,260003,2600,0,Liability,Liability,LYD
+قروض والتزامات مالية,الخصوم,2700,2,1,Liability,Liability,LYD
+قرض بنكي طويل الأجل,قروض والتزامات مالية,270001,2700,0,Liability,Liability,LYD
+قرض قصير الأجل,قروض والتزامات مالية,270002,2700,0,Liability,Liability,LYD
+تسهيلات ائتمانية جارية,قروض والتزامات مالية,270003,2700,0,Liability,Liability,LYD
+فوائد مستحقة الدفع,قروض والتزامات مالية,270004,2700,0,Current Liability,Liability,LYD
+التزامات إيجار,الخصوم,2850,2,1,Liability,Liability,LYD
+التزام إيجار – مكتب,التزامات إيجار,285001,2850,0,Liability,Liability,LYD
+التزام إيجار – خوادم,التزامات إيجار,285002,2850,0,Liability,Liability,LYD
+التزام إيجار – رخصة برمجية,التزامات إيجار,285003,2850,0,Liability,Liability,LYD
+المحافظ,,3,,1,,Asset,LYD
+محفظة السائقين,المحافظ,3100,3,1,,Asset,LYD
+الرصيد القابل للاستخدام,محفظة السائقين,310001,3100,0,,Asset,LYD
+محفظة المستخدمين,المحافظ,3200,3,1,,Asset,LYD
+الرصيد المجاني المستخدم,محفظة المستخدمين,320001,3200,0,,Asset,LYD
+حقوق الملكية,,4,,1,,Equity,LYD
+رأس المال,حقوق الملكية,4100,4,1,Equity,Equity,LYD
+رأس المال A,رأس المال,410001,4100,0,Equity,Equity,LYD
+الاحتياطيات,حقوق الملكية,4200,4,1,Equity,Equity,LYD
+أرباح محتجزة,الاحتياطيات,420001,4200,0,Equity,Equity,LYD
+نتيجة الفترة,حقوق الملكية,4300,4,1,Income Account,Equity,LYD
+صافي الدخل,نتيجة الفترة,430001,4300,0,Income Account,Equity,LYD
+الشركاء,حقوق الملكية,4400,4,1,Equity,Equity,LYD
+رأس مال الشريك أ,الشركاء,440001,4400,0,Equity,Equity,LYD
+جاري الشريك أ,الشركاء,440002,4400,0,,Equity,LYD
+المساهمين,حقوق الملكية,4500,4,1,Equity,Equity,LYD
+رأس مال المساهم,المساهمين,450001,4500,0,Equity,Equity,LYD
+أرباح معلقة - المساهمين,المساهمين,450002,4500,0,Equity,Equity,LYD
+الإيرادات,,5,,1,,Income,LYD
+إيرادات تشغيلية,الإيرادات,5100,5,1,Income Account,Income,LYD
+إيراد عمولة من السائق,إيرادات تشغيلية,510001,5100,0,Income Account,Income,LYD
+إيراد إعادة شحن,إيرادات تشغيلية,510002,5100,0,Income Account,Income,LYD
+إيرادات التطبيق,الإيرادات,5110,5,1,Income Account,Income,LYD
+إيراد عمولة الرحلات,إيرادات التطبيق,511001,5110,0,Income Account,Income,LYD
+إيراد شحن المحفظة,إيرادات التطبيق,511002,5110,0,Income Account,Income,LYD
+إيراد خصم قسائم,إيرادات التطبيق,511003,5110,0,Income Account,Income,LYD
+إيرادات غير تشغيلية,الإيرادات,5120,5,1,Income Account,Income,LYD
+إيرادات تأخير / غرامات,إيرادات غير تشغيلية,512001,5120,0,Income Account,Income,LYD
+فائض خزينة / تسويات موجبة,إيرادات غير تشغيلية,512002,5120,0,Income Account,Income,LYD
+إيرادات أخرى,الإيرادات,5200,5,1,Income Account,Income,LYD
+خصومات مكتسبة,إيرادات أخرى,520001,5200,0,Income Account,Income,LYD
+حسابات نظامية,الإيرادات,5300,5,1,Temporary,Income,LYD
+Accrued Income,حسابات نظامية,530001,5300,0,Temporary,Income,LYD
+Profit or Loss on Exchange,حسابات نظامية,530002,5300,0,Temporary,Income,LYD
+أرباح فروق العملة,حسابات نظامية,530003,5300,0,Temporary,Income,LYD
+عمليات متوقفة إيرادات,الإيرادات,5990,5,1,Income Account,Income,LYD
+أرباح من عمليات متوقفة,عمليات متوقفة إيرادات,599001,5990,0,Income Account,Income,LYD
+المصروفات التشغيلية,,6,,1,,Expense,LYD
+رواتب وتعويضات,المصروفات التشغيلية,6100,6,1,Direct Expense,Expense,LYD
+رواتب موظفين,رواتب وتعويضات,610001,6100,0,Indirect Expense,Expense,LYD
+مكافآت,رواتب وتعويضات,610002,6100,0,Indirect Expense,Expense,LYD
+رواتب إداريين,رواتب وتعويضات,610003,6100,0,Indirect Expense,Expense,LYD
+رواتب السائقين المرتبطين بالإدارة,رواتب وتعويضات,610004,6100,0,Indirect Expense,Expense,LYD
+الرواتب الأساسية,رواتب وتعويضات,610005,6100,0,Indirect Expense,Expense,LYD
+البدلات والمزايا,رواتب وتعويضات,610006,6100,0,Indirect Expense,Expense,LYD
+الضرائب والتأمينات الاجتماعية,رواتب وتعويضات,610007,6100,0,Indirect Expense,Expense,LYD
+مكافآت نهاية الخدمة,رواتب وتعويضات,610008,6100,0,Liability,Expense,LYD
+تشغيلية,المصروفات التشغيلية,6200,6,1,Expense Account,Expense,LYD
+هاتف وإنترنت,تشغيلية,620001,6200,0,Expense Account,Expense,LYD
+صيانة خوادم,تشغيلية,620002,6200,0,Expense Account,Expense,LYD
+قرطاسية,تشغيلية,620003,6200,0,Expense Account,Expense,LYD
+رخص التطبيقات والسيرفرات,تشغيلية,620004,6200,0,Expense Account,Expense,LYD
+تكلفة التكامل مع التطبيق,تشغيلية,620005,6200,0,Expense Account,Expense,LYD
+رخصة استخدام تطبيق ERPNext,تشغيلية,620006,6200,0,Expense Account,Expense,LYD
+اشتراك خوادم سحابية – AWS,تشغيلية,620007,6200,0,Expense Account,Expense,LYD
+مصروفات تسويقية,المصروفات التشغيلية,6300,6,1,Expense Account,Expense,LYD
+هدايا السائقين,مصروفات تسويقية,630001,6300,0,Expense Account,Expense,LYD
+هدايا المستخدمين,مصروفات تسويقية,630002,6300,0,Expense Account,Expense,LYD
+خصومات ترويجية,مصروفات تسويقية,630003,6300,0,Expense Account,Expense,LYD
+مكافآت تحفيزية للسائقين,مصروفات تسويقية,630004,6300,0,Expense Account,Expense,LYD
+هدايا تسجيل للمستخدمين الجدد,مصروفات تسويقية,630005,6300,0,Expense Account,Expense,LYD
+حملات رقمية عبر السوشيال ميديا,مصروفات تسويقية,630006,6300,0,Expense Account,Expense,LYD
+مصروفات متعلقة بالرحلات,المصروفات التشغيلية,6400,6,1,Expense Account,Expense,LYD
+دعم وقود مرتبط بالكيلومترات,مصروفات متعلقة بالرحلات,640001,6400,0,Expense Account,Expense,LYD
+تعويضات عن تأخير الرحلات,مصروفات متعلقة بالرحلات,640002,6400,0,Expense Account,Expense,LYD
+حسابات النظام,المصروفات التشغيلية,6900,6,1,Expense Account,Expense,LYD
+Stock Adjustment Account,حسابات النظام,690001,6900,0,Stock Adjustment,Expense,LYD
+Expenses Included in Valuation,حسابات النظام,690002,6900,0,Expense Account,Expense,LYD
+خسائر فروق العملة,حسابات النظام,690003,6900,0,Expense Account,Expense,LYD
+تسويات تقريبية,حسابات النظام,690004,6900,0,Expense Account,Expense,LYD
+ديون معدومة / شطب,حسابات النظام,690005,6900,0,Expense Account,Expense,LYD
+فرق تقييم المخزون,حسابات النظام,690006,6900,0,Stock Adjustment,Expense,LYD
+فرق تقييم الأصول,حسابات النظام,690007,6900,0,Depreciation,Expense,LYD
+استهلاك حق الاستخدام,المصروفات التشغيلية,6950,6,1,Depreciation,Expense,LYD
+استهلاك أصل حق الاستخدام – مكتب,استهلاك حق الاستخدام,695001,6950,0,Depreciation,Expense,LYD
+استهلاك أصل حق الاستخدام – خوادم,استهلاك حق الاستخدام,695002,6950,0,Depreciation,Expense,LYD
+استهلاك أصل حق الاستخدام – ترخيص برامج,استهلاك حق الاستخدام,695003,6950,0,Depreciation,Expense,LYD
+فوائد على التزامات الإيجار,المصروفات التشغيلية,6951,6,1,Expense Account,Expense,LYD
+فوائد على التزام الإيجار – مكتب,فوائد على التزامات الإيجار,695101,6951,0,Expense Account,Expense,LYD
+فوائد على التزام الإيجار – خوادم,فوائد على التزامات الإيجار,695102,6951,0,Expense Account,Expense,LYD
+عمليات متوقفة مصروفات تشغيلية,المصروفات التشغيلية,6990,6,1,Expense Account,Expense,LYD
+خسائر من عمليات متوقفة,عمليات متوقفة مصروفات تشغيلية,699001,6990,0,Expense Account,Expense,LYD
+تكلفة المبيعات,,8,,1,Cost of Goods Sold,Expense,LYD
+تكلفة تشغيل,تكلفة المبيعات,8100,8,1,Cost of Goods Sold,Expense,LYD
+تكلفة بطاقات مسبقة الدفع,تكلفة تشغيل,810001,8100,0,Cost of Goods Sold,Expense,LYD
+تكلفة ديزل موزع,تكلفة تشغيل,810002,8100,0,Cost of Goods Sold,Expense,LYD
