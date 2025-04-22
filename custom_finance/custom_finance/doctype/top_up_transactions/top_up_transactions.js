@@ -22,3 +22,10 @@ frappe.ui.form.on("Top-up Transactions", {
         }
     }
 });
+
+frappe.ui.form.on("Accounts", {
+    party_type:function(frm, cdt, cdn){
+        var child = locals[cdt][cdn];
+        frappe.model.set_value(cdt, cdn, "party", null);
+    }
+});

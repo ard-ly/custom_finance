@@ -16,65 +16,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Custom Finance",
-   "link_count": 5,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Top-up Transactions",
-   "link_count": 0,
-   "link_to": "Top-up Transactions",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Cash Transfers to Merchants",
-   "link_count": 0,
-   "link_to": "Cash Transfers to Merchants",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Central Bank Transfers",
-   "link_count": 0,
-   "link_to": "Central Bank Transfers",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Cheque Reconciliation",
-   "link_count": 0,
-   "link_to": "Cheque Reconciliation",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Revenue recording",
-   "link_count": 0,
-   "link_to": "Revenue recording",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Extra",
    "link_count": 4,
    "link_type": "DocType",
@@ -120,9 +61,38 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Custom Finance",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Top-up Transactions",
+   "link_count": 0,
+   "link_to": "Top-up Transactions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settlement Transaction",
+   "link_count": 0,
+   "link_to": "Settlement Transaction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2025-01-18 18:02:11.925451",
+ "modified": "2025-04-22 11:47:46.363165",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Custom Finance",

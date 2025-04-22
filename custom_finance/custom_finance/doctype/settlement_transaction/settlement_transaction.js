@@ -1,7 +1,7 @@
 // Copyright (c) 2024, custom_finance and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Cash Transfers to Merchants", {
+frappe.ui.form.on("Settlement Transaction", {
 	purpose: function(frm) {
         if(frm.doc.purpose){
 			frappe.model.with_doc("Purpose", frm.doc.purpose, function() {
@@ -22,3 +22,12 @@ frappe.ui.form.on("Cash Transfers to Merchants", {
         }
     }
 });
+
+
+frappe.ui.form.on("Accounts", {
+    party_type:function(frm, cdt, cdn){
+        var child = locals[cdt][cdn];
+        frappe.model.set_value(cdt, cdn, "party", null);
+    }
+});
+

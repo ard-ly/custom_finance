@@ -13,6 +13,8 @@
   "section_break_fnvs",
   "accounts",
   "section_break_hvbj",
+  "reference_number",
+  "reference_date",
   "notes",
   "naming_series",
   "amended_from"
@@ -75,19 +77,31 @@
    "hidden": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Cash Transfers to Merchants",
+   "options": "Settlement Transaction",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "reference_number",
+   "fieldtype": "Data",
+   "label": "Reference Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_date",
+   "fieldtype": "Date",
+   "label": "Reference Date",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-18 16:05:33.353690",
+ "modified": "2025-04-22 11:46:24.457424",
  "modified_by": "Administrator",
  "module": "custom_finance",
- "name": "Cash Transfers to Merchants",
+ "name": "Settlement Transaction",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
@@ -105,6 +119,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
