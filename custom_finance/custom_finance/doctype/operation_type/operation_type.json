@@ -29,6 +29,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Operation Credit Account",
+   "link_filters": "[[\"Account\",\"is_group\",\"=\",0]]",
    "options": "Account",
    "reqd": 1,
    "unique": 1
@@ -38,6 +39,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Operation Debit Account",
+   "link_filters": "[[\"Account\",\"is_group\",\"=\",0]]",
    "options": "Account",
    "reqd": 1,
    "unique": 1
@@ -45,7 +47,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-18 15:50:48.787696",
+ "modified": "2025-01-18 17:09:17.636845",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Operation Type",
