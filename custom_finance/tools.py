@@ -77,4 +77,25 @@ def add_chart_of_account():
 
 
 
+def add_party_type():
+    party_types = ["Driver", "User"]
+    
+    for party_type in party_types:
+        if not frappe.db.exists("Party Type", {"name": party_type}):
+            try:
+                party_type_doc = frappe.new_doc("Party Type")
+                party_type_doc.update({
+                    "doctype": "Party Type",
+                    "name": party_type,
+                    "party_type": party_type,
+                    "account_type": "Payable",
+                })
+                party_type_doc.save(ignore_permissions=True)
+                frappe.db.commit()
+                print(f"Added '{party_type}' as Party Type")
+            except Exception as e:
+                print(f"Error while adding '{party_type}' Party Type: {e}")
+
+
+
 
