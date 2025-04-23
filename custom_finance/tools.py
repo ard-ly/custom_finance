@@ -78,7 +78,7 @@ def add_chart_of_account():
 
 
 def add_party_type():
-    party_types = ["Driver", "User"]
+    party_types = ["Driver", "Mobile Application User"]
     
     for party_type in party_types:
         if not frappe.db.exists("Party Type", {"name": party_type}):

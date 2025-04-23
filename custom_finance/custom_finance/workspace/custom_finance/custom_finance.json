@@ -46,7 +46,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Extra",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -67,6 +67,16 @@
    "label": "Operation Type",
    "link_count": 0,
    "link_to": "Operation Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mobile Application User",
+   "link_count": 0,
+   "link_to": "Mobile Application User",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -102,7 +112,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-04-22 11:51:28.990096",
+ "modified": "2025-04-23 11:39:19.849713",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Custom Finance",
