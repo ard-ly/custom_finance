@@ -2,6 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Settlement Transaction", {
+    refresh: function(frm) {
+        frm.fields_dict["accounts"].grid.get_field("party_type").get_query = function(doc, cdt, cdn) {
+            return {
+                doctype: "Party Type",
+            };
+        };
+    },
 	purpose: function(frm) {
         if(frm.doc.purpose){
 			frappe.model.with_doc("Purpose", frm.doc.purpose, function() {
