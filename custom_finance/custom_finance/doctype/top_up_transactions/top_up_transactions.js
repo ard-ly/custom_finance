@@ -2,6 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Top-up Transactions", {
+    refresh: function(frm) {
+        frm.fields_dict["transactions_account"].grid.get_field("party_type").get_query = function(doc, cdt, cdn) {
+            return {
+                doctype: "Party Type",
+            };
+        };
+    },
 	operation_type: function(frm) {
         if(frm.doc.operation_type){
 			frappe.model.with_doc("Operation Type", frm.doc.operation_type, function() {
