@@ -35,6 +35,10 @@ class SettlementTransaction(Document):
                 "credit_in_account_currency": row.credit or 0,
                 "party_type": row.party_type,
                 "party": row.party,
+                "cost_center": self.cost_center or None,
+                "territory": self.territory or None,
+                "driver_type": self.driver_type or None,
+                "wallet_type": self.wallet_type or None,
             })
 
         # Save and submit the Journal Entry

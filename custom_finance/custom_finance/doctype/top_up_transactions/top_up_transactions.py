@@ -36,7 +36,10 @@ class TopupTransactions(Document):
                 "credit_in_account_currency": row.credit or 0,
                 "party_type": row.party_type if row.party_type else None,
                 "party": row.party if row.party else None,
-                # Add other optional fields like cost_center if needed
+                "cost_center": self.cost_center or None,
+                "territory": self.territory or None,
+                "driver_type": self.driver_type or None,
+                "wallet_type": self.wallet_type or None,
             })
 
         # Save and submit the Journal Entry

@@ -11,6 +11,12 @@
   "operation_type",
   "column_break_uyzr",
   "posting_date",
+  "section_break_pfut",
+  "cost_center",
+  "territory",
+  "column_break_ovxm",
+  "driver_type",
+  "wallet_type",
   "section_break_yuti",
   "transactions_account",
   "section_break_zixw",
@@ -92,12 +98,44 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "section_break_pfut",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "column_break_ovxm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "driver_type",
+   "fieldtype": "Link",
+   "label": "Driver Type",
+   "options": "Driver Type"
+  },
+  {
+   "fieldname": "wallet_type",
+   "fieldtype": "Link",
+   "label": "Wallet Type",
+   "options": "Wallet Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-22 12:14:02.389255",
+ "modified": "2025-04-23 10:45:57.397900",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Top-up Transactions",

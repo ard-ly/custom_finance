@@ -11,6 +11,12 @@
   "purpose",
   "column_break_qutb",
   "date",
+  "section_break_ycui",
+  "cost_center",
+  "territory",
+  "column_break_rlae",
+  "driver_type",
+  "wallet_type",
   "section_break_fnvs",
   "accounts",
   "section_break_hvbj",
@@ -93,12 +99,44 @@
    "fieldtype": "Date",
    "label": "Reference Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ycui",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "column_break_rlae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "driver_type",
+   "fieldtype": "Link",
+   "label": "Driver Type",
+   "options": "Driver Type"
+  },
+  {
+   "fieldname": "wallet_type",
+   "fieldtype": "Link",
+   "label": "Wallet Type",
+   "options": "Wallet Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-22 12:14:21.623609",
+ "modified": "2025-04-23 11:03:48.471644",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Settlement Transaction",
