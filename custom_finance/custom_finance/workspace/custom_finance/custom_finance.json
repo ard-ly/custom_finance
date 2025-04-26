@@ -54,9 +54,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Data Import",
+   "label": "Transaction Import",
    "link_count": 0,
-   "link_to": "Data Import",
+   "link_to": "Transaction Import",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -112,7 +112,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-04-23 11:39:19.849713",
+ "modified": "2025-04-26 15:13:01.115044",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Custom Finance",
