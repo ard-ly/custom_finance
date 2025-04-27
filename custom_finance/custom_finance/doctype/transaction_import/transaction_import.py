@@ -92,15 +92,14 @@ class TransactionImport(Document):
                             doc.append("transactions_account", credit_entry)
                             
                             doc.save(ignore_permissions=True)
+                            doc.submit()
                             frappe.db.commit()
                             success_count += 1
                             added_transactions.append(transaction_number)
 
-                        except MySQLError as e:
-                            if e.args[0] == 1292:
-                                error_messages.append(f"Row {index+1}: Invalid date format.")
-                            else:
-                                error_messages.append(f"Row {index+1}: Database error - {e.args[1]}")
+                        except Exception as e:
+                            error_messages.append(f"Row {index+1}: ❌ {str(e)}")
+                            frappe.db.rollback()
                             continue
 
                     elif self.transaction_type=='Settlement Transaction':
@@ -117,7 +116,7 @@ class TransactionImport(Document):
                         if not purpose_doc:
                             error_messages.append(f"Row {index+1}: Purpose '{type_or_purpose_name}' not found.")
                             continue
-
+                        
                         try:
                             doc = frappe.new_doc("Settlement Transaction")
                             doc.transaction_number = transaction_number
@@ -126,7 +125,7 @@ class TransactionImport(Document):
                             doc.territory = create_territory_if_not_exists(territory_name)
                             doc.driver_type = create_driver_type_if_not_exists(driver_type_name)
                             doc.wallet_type = create_wallet_type_if_not_exists(wallet_type_name)
-                            
+
                             # Child Table Entries
                             debit_entry = {
                                 "account": purpose_doc.purpose_debit_account,
@@ -144,19 +143,20 @@ class TransactionImport(Document):
                                 "party": party_to
                             }
 
-                            doc.append("transactions_account", debit_entry)
-                            doc.append("transactions_account", credit_entry)
+                            doc.append("accounts", debit_entry)
+                            doc.append("accounts", credit_entry)
                             
+                            doc.docstatus = 1
+
                             doc.save(ignore_permissions=True)
+                            doc.submit()
                             frappe.db.commit()
                             success_count += 1
                             added_transactions.append(transaction_number)
 
-                        except MySQLError as e:
-                            if e.args[0] == 1292:
-                                error_messages.append(f"Row {index+1}: Invalid date format.")
-                            else:
-                                error_messages.append(f"Row {index+1}: Database error - {e.args[1]}")
+                        except Exception as e:
+                            error_messages.append(f"Row {index+1}: ❌ {str(e)}")
+                            frappe.db.rollback()
                             continue
                 
                     else:

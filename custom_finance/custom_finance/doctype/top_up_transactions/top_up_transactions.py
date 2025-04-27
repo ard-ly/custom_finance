@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 class TopupTransactions(Document):
     def before_insert(self):
@@ -18,7 +19,7 @@ class TopupTransactions(Document):
         journal_entry = frappe.get_doc({
             "doctype": "Journal Entry",
             "voucher_type": "Journal Entry",
-            "posting_date": self.posting_date,
+            "posting_date": getdate(self.transaction_datetime),
             "custom_operation_type": self.operation_type,  # Custom field in JE
             "accounts": []
         })

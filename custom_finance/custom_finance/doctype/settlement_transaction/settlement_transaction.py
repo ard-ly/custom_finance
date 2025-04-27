@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 class SettlementTransaction(Document):
     def before_insert(self):
@@ -18,7 +19,7 @@ class SettlementTransaction(Document):
         journal_entry = frappe.get_doc({
             "doctype": "Journal Entry",
             "voucher_type": "Journal Entry",
-            "posting_date": self.date,  # Replace with your actual posting date field
+            "posting_date": getdate(self.transaction_datetime),
             "accounts": []
         })
 

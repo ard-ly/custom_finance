@@ -3,7 +3,8 @@
 
 frappe.ui.form.on("Transaction Import", {
 	transaction_type: function(frm) {
-		frm.set_value("output", )		
+		frm.set_value("output", )
+		frm.set_value("attach_file", )
 	},
 	download_template: function(frm) {
 		if(frm.doc.transaction_type=='Top-up Transactions'){
@@ -16,6 +17,7 @@ frappe.ui.form.on("Transaction Import", {
     	frm.set_value("output", )
     },
     get_data: function (frm) {
+    	frm.set_value("output", )
     	if(frm.doc.attach_file && frm.doc.transaction_type){
 
             frappe.call({
