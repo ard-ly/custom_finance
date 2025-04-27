@@ -18,107 +18,171 @@ class TransactionImport(Document):
         file_name = self.attach_file.split('/')[-1]
         file_path = frappe.get_site_path(directory_type, 'files', file_name)
 
+        success_count = 0
+        error_messages = []
+        added_transactions = []
+
         try:
             with open(file_path, "r") as infile:
                 rows = read_csv_content(infile.read())
-                success_count = 0
-                i = 0
-                for index, row in enumerate(rows):
-                    # skip header
-                    if index == 0:
-                        continue
 
-                    # Skip completely empty rows
-                    if not any(row):
+                for index, row in enumerate(rows):
+                    # skip header or empty rows
+                    if index == 0 or not any(row):
                         continue
 
                     transaction_number = row[0]
-                    operation_type_name = row[1]
+                    type_or_purpose_name = row[1]
                     datetime_str = row[2]
                     territory_name = row[3]
-                    driver_type = row[4]
-                    wallet_type = row[5]
+                    driver_type_name = row[4]
+                    wallet_type_name = row[5]
                     party_type_from = row[6]
                     party_from = row[7]
                     party_type_to = row[8]
                     party_to = row[9]
                     amount = row[10]
 
+                    if not (transaction_number and type_or_purpose_name):
+                        error_messages.append(f"Row {index+1}: Missing transaction number or type/purpose.")
+                        continue
+
                     if self.transaction_type=='Top-up Transactions':
-                        if transaction_number and operation_type_name:
-                            if not frappe.db.exists("Top-up Transactions", {"transaction_number": transaction_number}):
-                                # Check Operation Type
-                                operation_doc = frappe.db.get_value("Operation Type", {"operation_type_name": operation_type_name}, ["name", "operation_debit_account", "operation_credit_account"], as_dict=True)
-                                if not operation_doc:
-                                    frappe.throw(f"Operation Type '{operation_type_name}' in row {index+1} does not exist!", alert=True, indicator='red')
-                                    continue
+                        if frappe.db.exists("Top-up Transactions", {"transaction_number": transaction_number}):
+                            error_messages.append(f"Row {index+1}: Transaction number '{transaction_number}' already exists.")
+                            continue
 
-                                try:
-                                    doc = frappe.new_doc("Top-up Transactions")
-                                    doc.transaction_number = transaction_number
-                                    doc.transaction_datetime = parse_datetime(datetime_str)
-                                    doc.driver_type = driver_type
-                                    doc.wallet_type = wallet_type
-                                    territory = create_territory_if_not_exists(territory_name)
-                                    doc.territory = territory
+                        operation_doc = frappe.db.get_value(
+                            "Operation Type",
+                            {"operation_type_name": type_or_purpose_name},
+                            ["name", "operation_debit_account", "operation_credit_account"],
+                            as_dict=True
+                        )
+                        if not operation_doc:
+                            error_messages.append(f"Row {index+1}: Operation Type '{type_or_purpose_name}' not found.")
+                            continue
 
-                                    doc.flags.ignore_validate = True
-                                    doc.flags.ignore_mandatory = True
-                                    doc.save(ignore_permissions=True)
-                                    frappe.db.commit()
-                                except MySQLError as e:
-                                    if e.args[0] == 1292:
-                                        frappe.msgprint("Error!", alert=True, indicator='red')
-                                        return f"Incorrect date value: {e.args[1]}"
-                                    else:
-                                        frappe.msgprint("Error!", alert=True, indicator='red')
-                                        return f"Error: {e.args[1]}"
-                                    continue
+                        try:
+                            doc = frappe.new_doc("Top-up Transactions")
+                            doc.transaction_number = transaction_number
+                            doc.operation_type = operation_doc.name
+                            doc.transaction_datetime = parse_datetime(datetime_str)
+                            doc.territory = create_territory_if_not_exists(territory_name)
+                            doc.driver_type = create_driver_type_if_not_exists(driver_type_name)
+                            doc.wallet_type = create_wallet_type_if_not_exists(wallet_type_name)
+                            
+                            # Child Table Entries
+                            debit_entry = {
+                                "account": operation_doc.operation_debit_account,
+                                "debit": amount or 0,
+                                "credit": 0,
+                                "party_type": party_type_from,
+                                "party": party_from
+                            }
 
-                                i+=1
-                                print(f"- Successfully add mail: {row[4]}")
-                                frappe.msgprint(f"- Successfully add mail: {row[4]}", alert=True, indicator='green')
-                    
-                    elif self.transaction_type=='Outgoing Mail':
-                        if row[0] and row[2] and row[3] and row[4]:
-                            if not frappe.db.exists("Outgoing Mail", {"reference_number": row[1]}):
-                                try:
-                                    doc = frappe.new_doc("Outgoing Mail")
-                                    doc.update({
-                                        "doctype":"Outgoing Mail",
-                                        "message_registration_date": convert_date_format(str(row[0])),
-                                        "reference_number": row[1],
-                                        "from": row[2],
-                                        "to": row[3],
-                                        "message_subject": row[4],
-                                        "notes": row[5],
-                                        "docstatus": 1
-                                    })
-                                    doc.flags.ignore_validate = True
-                                    doc.flags.ignore_mandatory = True         
-                                    doc.save(ignore_permissions=True)
-                                    frappe.db.commit()
-                                except MySQLError as e:
-                                    if e.args[0] == 1292:
-                                        frappe.msgprint("Error!", alert=True, indicator='red')
-                                        return f"Incorrect date value: {e.args[1]}"
-                                    else:
-                                        frappe.msgprint("Error!", alert=True, indicator='red')
-                                        return f"Error: {e.args[1]}"
-                                    continue
+                            credit_entry = {
+                                "account": operation_doc.operation_credit_account,
+                                "debit": 0,
+                                "credit": amount or 0,
+                                "party_type": party_type_to,
+                                "party": party_to
+                            }
 
-                                i+=1
-                                print(f"- Successfully add mail: {row[4]}")
-                                frappe.msgprint(f"- Successfully add mail: {row[4]}", alert=True, indicator='green')
-                    
+                            doc.append("transactions_account", debit_entry)
+                            doc.append("transactions_account", credit_entry)
+                            
+                            doc.save(ignore_permissions=True)
+                            frappe.db.commit()
+                            success_count += 1
+                            added_transactions.append(transaction_number)
+
+                        except MySQLError as e:
+                            if e.args[0] == 1292:
+                                error_messages.append(f"Row {index+1}: Invalid date format.")
+                            else:
+                                error_messages.append(f"Row {index+1}: Database error - {e.args[1]}")
+                            continue
+
+                    elif self.transaction_type=='Settlement Transaction':
+                        if frappe.db.exists("Settlement Transaction", {"transaction_number": transaction_number}):
+                            error_messages.append(f"Row {index+1}: Transaction number '{transaction_number}' already exists.")
+                            continue
+
+                        purpose_doc = frappe.db.get_value(
+                            "Purpose",
+                            {"purpose_name": type_or_purpose_name},
+                            ["name", "purpose_debit_account", "purpose_credit_account"],
+                            as_dict=True
+                        )
+                        if not purpose_doc:
+                            error_messages.append(f"Row {index+1}: Purpose '{type_or_purpose_name}' not found.")
+                            continue
+
+                        try:
+                            doc = frappe.new_doc("Settlement Transaction")
+                            doc.transaction_number = transaction_number
+                            doc.purpose = purpose_doc.name
+                            doc.transaction_datetime = parse_datetime(datetime_str)
+                            doc.territory = create_territory_if_not_exists(territory_name)
+                            doc.driver_type = create_driver_type_if_not_exists(driver_type_name)
+                            doc.wallet_type = create_wallet_type_if_not_exists(wallet_type_name)
+                            
+                            # Child Table Entries
+                            debit_entry = {
+                                "account": purpose_doc.purpose_debit_account,
+                                "debit": amount or 0,
+                                "credit": 0,
+                                "party_type": party_type_from,
+                                "party": party_from
+                            }
+
+                            credit_entry = {
+                                "account": purpose_doc.purpose_credit_account,
+                                "debit": 0,
+                                "credit": amount or 0,
+                                "party_type": party_type_to,
+                                "party": party_to
+                            }
+
+                            doc.append("transactions_account", debit_entry)
+                            doc.append("transactions_account", credit_entry)
+                            
+                            doc.save(ignore_permissions=True)
+                            frappe.db.commit()
+                            success_count += 1
+                            added_transactions.append(transaction_number)
+
+                        except MySQLError as e:
+                            if e.args[0] == 1292:
+                                error_messages.append(f"Row {index+1}: Invalid date format.")
+                            else:
+                                error_messages.append(f"Row {index+1}: Database error - {e.args[1]}")
+                            continue
+                
                     else:
-                        return "Missing Data!" 
-                print('*************')
-                frappe.msgprint("Success!", alert=True, indicator='green')
-                return f"Total mail added: {i}"
+                        error_messages.append(f"Invalid Transaction Type Selected.")
+                
+                
+                # After processing all rows
+                output_message = f"✅ {success_count} transactions imported successfully.\n"
+                if added_transactions:
+                    output_message += "\nAdded Transactions:\n" + "\n".join(added_transactions)
+
+                if error_messages:
+                    output_message += "\n\n⚠️ Issues Found:\n" + "\n".join(error_messages)
+
+                self.output = output_message
+                self.save(ignore_permissions=True)
+
+                frappe.msgprint("Import finished. Check output field for details.", alert=True, indicator='green')
+                return output_message
+
         except Exception as e:
-            frappe.msgprint("Error!", alert=True, indicator='red')
-            return f"An error occurred: {e}"
+            error_message = f"❌ Error occurred: {str(e)}"
+            self.output = error_message
+            self.save(ignore_permissions=True)
+            frappe.msgprint(error_message, alert=True, indicator='red')
+            return error_message
             
 
 
@@ -158,36 +222,49 @@ def parse_datetime(value):
     if not value:
         return now_datetime()
     try:
+        converted = convert_datetime_format(value)
+        if converted:
+            return converted
+        else:
+            return now_datetime()
         return datetime.datetime.strptime(value, "%d/%m/%Y %H:%M")
     except ValueError:
         frappe.throw(f"Invalid datetime format: {value}. Expected format: DD/MM/YYYY HH:MM")
 
 
-
-def convert_date_format(date_str):
-    # List of possible date formats that the user might use
-    date_formats = [
-        "%d-%m-%Y",  # DD-MM-YYYY (e.g., 10-02-2005)
-        "%d/%m/%Y",  # DD/MM/YYYY (e.g., 10/02/2005)
-        "%Y-%m-%d",  # YYYY-MM-DD (e.g., 2005-02-10)
-        "%Y/%m/%d",  # YYYY/MM/DD (e.g., 2005/02/10)
-        "%d.%m.%Y",  # DD.MM.YYYY (e.g., 10.02.2005)
-        "%m-%d-%Y",  # MM-DD-YYYY (e.g., 02-10-2005)
-        "%m/%d/%Y"   # MM/DD/YYYY (e.g., 02/10/2005)
+def convert_datetime_format(date_str):
+    """Convert various possible formats to ERPNext datetime format (YYYY-MM-DD HH:MM:SS)."""
+    # Possible datetime formats
+    datetime_formats = [
+        "%d-%m-%Y %H:%M",   # DD-MM-YYYY HH:MM
+        "%d/%m/%Y %H:%M",   # DD/MM/YYYY HH:MM
+        "%Y-%m-%d %H:%M",   # YYYY-MM-DD HH:MM
+        "%Y/%m/%d %H:%M",   # YYYY/MM/DD HH:MM
+        "%d.%m.%Y %H:%M",   # DD.MM.YYYY HH:MM
+        "%m-%d-%Y %H:%M",   # MM-DD-YYYY HH:MM
+        "%m/%d/%Y %H:%M",   # MM/DD/YYYY HH:MM
+        "%d-%m-%Y",         # DD-MM-YYYY (date only, assume 00:00)
+        "%d/%m/%Y",         # DD/MM/YYYY (date only)
+        "%Y-%m-%d",         # YYYY-MM-DD (date only)
+        "%Y/%m/%d",         # YYYY/MM/DD (date only)
+        "%d.%m.%Y",         # DD.MM.YYYY (date only)
+        "%m-%d-%Y",         # MM-DD-YYYY (date only)
+        "%m/%d/%Y"          # MM/DD/YYYY (date only)
     ]
-    
-    for date_format in date_formats:
+
+    for fmt in datetime_formats:
         try:
-            # Attempt to parse the date string with each format
-            date_obj = datetime.strptime(date_str, date_format)
-            # Return the date in ERPNext format YYYY-MM-DD
-            return date_obj.strftime("%Y-%m-%d")
+            dt = datetime.datetime.strptime(date_str, fmt)
+            # If only date part provided, add time 00:00:00
+            if "%H" not in fmt:
+                dt = dt.replace(hour=0, minute=0, second=0)
+            return dt.strftime("%Y-%m-%d %H:%M:%S")
         except ValueError:
-            # Continue to the next format if parsing fails
             continue
 
-    # If no format matched, log the error and return None
-    frappe.msgprint(f"Error in date format conversion: Invalid date format '{date_str}'", alert=True, indicator='red')
+    # If all formats fail
+    frappe.msgprint(f"Error: Invalid datetime format '{date_str}'.", alert=True, indicator='red')
     return None
+
 
 
