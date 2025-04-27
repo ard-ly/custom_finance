@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from pymysql import MySQLError
-from frappe.utils import cint, cstr, flt, nowdate, comma_and, date_diff, getdate, time_diff, time_diff_in_hours, now_datetime
+from frappe.utils import cint, cstr, flt, nowdate, comma_and, date_diff, getdate, get_datetime, time_diff, time_diff_in_hours, now_datetime
 from datetime import datetime
 
 class TransactionImport(Document):
@@ -66,7 +66,7 @@ class TransactionImport(Document):
                             doc = frappe.new_doc("Top-up Transactions")
                             doc.transaction_number = transaction_number
                             doc.operation_type = operation_doc.name
-                            doc.transaction_datetime = parse_datetime(datetime_str)
+                            doc.transaction_datetime = get_datetime(datetime_str)
                             doc.territory = create_territory_if_not_exists(territory_name)
                             doc.driver_type = create_driver_type_if_not_exists(driver_type_name)
                             doc.wallet_type = create_wallet_type_if_not_exists(wallet_type_name)
@@ -122,7 +122,7 @@ class TransactionImport(Document):
                             doc = frappe.new_doc("Settlement Transaction")
                             doc.transaction_number = transaction_number
                             doc.purpose = purpose_doc.name
-                            doc.transaction_datetime = parse_datetime(datetime_str)
+                            doc.transaction_datetime = get_datetime(datetime_str)
                             doc.territory = create_territory_if_not_exists(territory_name)
                             doc.driver_type = create_driver_type_if_not_exists(driver_type_name)
                             doc.wallet_type = create_wallet_type_if_not_exists(wallet_type_name)
@@ -162,7 +162,7 @@ class TransactionImport(Document):
                     else:
                         error_messages.append(f"Invalid Transaction Type Selected.")
                 
-                
+
                 # After processing all rows
                 output_message = f"✅ {success_count} transactions imported successfully.\n"
                 if added_transactions:
