@@ -2,15 +2,16 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:ST-{#####}",
+ "autoname": "field:transaction_number",
  "creation": "2024-12-20 20:23:19.573882",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_wv4s",
+  "transaction_number",
   "purpose",
   "column_break_qutb",
-  "date",
+  "transaction_datetime",
   "section_break_ycui",
   "cost_center",
   "territory",
@@ -41,13 +42,6 @@
   {
    "fieldname": "column_break_qutb",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date"
   },
   {
    "fieldname": "section_break_fnvs",
@@ -131,16 +125,30 @@
    "fieldtype": "Link",
    "label": "Wallet Type",
    "options": "Wallet Type"
+  },
+  {
+   "default": "Today",
+   "fieldname": "transaction_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Transaction Datetime"
+  },
+  {
+   "fieldname": "transaction_number",
+   "fieldtype": "Data",
+   "label": "Transaction Number",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-23 11:03:48.471644",
+ "modified": "2025-04-27 10:33:50.336715",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Settlement Transaction",
- "naming_rule": "Expression",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -163,5 +171,6 @@
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "purpose"
 }

@@ -2,15 +2,16 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:TUT-{#####}",
+ "autoname": "field:transaction_number",
  "creation": "2024-12-20 19:26:49.850663",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_sk34",
+  "transaction_number",
   "operation_type",
   "column_break_uyzr",
-  "posting_date",
+  "transaction_datetime",
   "section_break_pfut",
   "cost_center",
   "territory",
@@ -43,14 +44,6 @@
   {
    "fieldname": "column_break_uyzr",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "Today",
-   "fieldname": "posting_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Posting Date"
   },
   {
    "fieldname": "section_break_yuti",
@@ -130,16 +123,31 @@
    "fieldtype": "Link",
    "label": "Wallet Type",
    "options": "Wallet Type"
+  },
+  {
+   "default": "Today",
+   "fieldname": "transaction_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transaction Datetime"
+  },
+  {
+   "fieldname": "transaction_number",
+   "fieldtype": "Data",
+   "label": "Transaction Number",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-23 10:45:57.397900",
+ "modified": "2025-04-27 10:33:28.237215",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Top-up Transactions",
- "naming_rule": "Expression",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -162,5 +170,6 @@
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "operation_type"
 }

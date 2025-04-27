@@ -7,9 +7,9 @@ frappe.ui.form.on("Transaction Import", {
 	},
 	download_template: function(frm) {
 		if(frm.doc.transaction_type=='Top-up Transactions'){
-			window.location.href = '/assets/custom_finance/file/top_up_transactions_template.csv';
+			window.location.href = '/assets/custom_finance/files/top_up_transactions_template.csv';
 		}else{
-			window.location.href = '/assets/custom_finance/file/settlement_transaction_template.csv';
+			window.location.href = '/assets/custom_finance/files/settlement_transaction_template.csv';
 		}
 	},
 	attach_file: function (frm) {
