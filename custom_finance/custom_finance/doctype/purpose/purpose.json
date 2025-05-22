@@ -31,8 +31,7 @@
    "label": "Purpose Debit Account",
    "link_filters": "[[\"Account\",\"is_group\",\"=\",0]]",
    "options": "Account",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "purpose_credit_account",
@@ -41,13 +40,12 @@
    "label": "Purpose Credit Account",
    "link_filters": "[[\"Account\",\"is_group\",\"=\",0]]",
    "options": "Account",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-01-18 17:11:19.505610",
+ "modified": "2025-05-22 14:37:59.350376",
  "modified_by": "Administrator",
  "module": "custom_finance",
  "name": "Purpose",
